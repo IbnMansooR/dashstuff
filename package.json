@@ -11,12 +11,16 @@
     "packages/agent"
   ],
   "scripts": {
+    "dev": "concurrently -n server,panel,sayt -c blue,green,magenta \"npm:dev:server\" \"npm:dev:dashboard\" \"npm:dev:landing\"",
     "dev:server": "npm run dev --workspace=@worktrack/server",
     "dev:dashboard": "npm run dev --workspace=@worktrack/dashboard",
     "dev:landing": "npm run dev --workspace=@worktrack/landing",
     "dev:agent": "npm run dev --workspace=@worktrack/agent",
     "build:dashboard": "npm run build --workspace=@worktrack/dashboard",
     "build:landing": "npm run build --workspace=@worktrack/landing"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   },
   "engines": {
     "node": ">=20"
