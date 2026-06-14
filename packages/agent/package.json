@@ -1,0 +1,14 @@
+{
+  "name": "@worktrack/agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "WorkTrack hodim agenti — ish vaqtini kuzatadi (Electron, Windows + Mac)",
+  "main": "main.cjs",
+  "scripts": {
+    "dev": "electron .",
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^42.4.0"
+  }
+}

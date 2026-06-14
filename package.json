@@ -1,0 +1,21 @@
+{
+  "name": "worktrack",
+  "version": "0.1.0",
+  "private": true,
+  "description": "WorkTrack — hodimlar ish vaqtini kuzatuvchi SaaS (agent + server + dashboard)",
+  "workspaces": [
+    "packages/shared",
+    "packages/server",
+    "packages/dashboard",
+    "packages/agent"
+  ],
+  "scripts": {
+    "dev:server": "npm run dev --workspace=@worktrack/server",
+    "dev:dashboard": "npm run dev --workspace=@worktrack/dashboard",
+    "dev:agent": "npm run dev --workspace=@worktrack/agent",
+    "build:dashboard": "npm run build --workspace=@worktrack/dashboard"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
