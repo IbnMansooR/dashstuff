@@ -17,6 +17,9 @@ export const config = {
     "0000000000000000000000000000000000000000000000000000000000000000",
   ),
   corsOrigin: process.env.CORS_ORIGIN ?? "http://localhost:5173",
+  // Platforma egasi (super-admin) uchun. Ishlab chiqarishda albatta o'zgartiring.
+  adminEmail: (process.env.ADMIN_EMAIL ?? "admin@feekr.uz").toLowerCase(),
+  adminPassword: process.env.ADMIN_PASSWORD ?? "admin12345",
 };
 
 if (config.screenshotKeyHex.length !== 64) {

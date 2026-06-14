@@ -7,6 +7,7 @@ import { employeesRouter } from "./routes/employees.ts";
 import { devicesRouter } from "./routes/devices.ts";
 import { ingestRouter } from "./routes/ingest.ts";
 import { dashboardRouter } from "./routes/dashboard.ts";
+import { adminRouter } from "./routes/admin.ts";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use("/api/employees", employeesRouter);
 app.use("/api/devices", devicesRouter);
 app.use("/api/ingest", ingestRouter);
 app.use("/api/dashboard", dashboardRouter);
+app.use("/api/admin", adminRouter);
 
 app.use((_req, res) => res.status(404).json({ error: "Topilmadi" }));
 

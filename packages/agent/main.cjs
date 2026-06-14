@@ -45,7 +45,7 @@ function createWindow() {
     width: 420,
     height: 560,
     resizable: false,
-    title: "WorkTrack",
+    title: "Feekr",
     webPreferences: {
       preload: path.join(__dirname, "preload.cjs"),
       contextIsolation: true,
@@ -160,7 +160,7 @@ function notifyRenderer(channel, payload) {
 
 function updateTray() {
   if (!tray) return;
-  tray.setToolTip(tracking ? "WorkTrack — kuzatilyapti" : "WorkTrack — to'xtatilgan");
+  tray.setToolTip(tracking ? "Feekr — kuzatilyapti" : "Feekr — to'xtatilgan");
 }
 
 // ---- IPC (renderer bilan aloqa) -------------------------------------------

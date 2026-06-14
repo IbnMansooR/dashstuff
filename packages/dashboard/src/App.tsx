@@ -59,7 +59,10 @@ function AuthScreen({ onAuthed }: { onAuthed: (u: any) => void }) {
   return (
     <div className="center">
       <form className="card auth" onSubmit={submit}>
-        <h1>WorkTrack</h1>
+        <div className="brand-logo">
+          <img src="/feekr-logo.svg" alt="" />
+          <span>Feekr</span>
+        </div>
         <p className="muted">Boshqaruv paneli</p>
         {mode === "register" && (
           <>
@@ -106,7 +109,10 @@ function Dashboard({ user, onLogout }: { user: any; onLogout: () => void }) {
   return (
     <div className="app">
       <header>
-        <strong>WorkTrack</strong>
+        <span className="brand-logo">
+          <img src="/feekr-logo.svg" alt="" />
+          <span>Feekr</span>
+        </span>
         <span className="muted">{user.fullName} · {user.email}</span>
         <button className="link" onClick={onLogout}>Chiqish</button>
       </header>

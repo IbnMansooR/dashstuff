@@ -12,6 +12,33 @@ export function getToken() {
   return token;
 }
 
+// ===== Super-admin (platforma egasi) — alohida token =====
+let adminToken: string | null = localStorage.getItem("wt_admin_token");
+export function setAdminToken(t: string | null) {
+  adminToken = t;
+  if (t) localStorage.setItem("wt_admin_token", t);
+  else localStorage.removeItem("wt_admin_token");
+}
+export function getAdminToken() {
+  return adminToken;
+}
+
+async function adminRequest<T>(path: string, options: RequestInit = {}): Promise<T> {
+  const res = await fetch(BASE + path, {
+    ...options,
+    headers: {
+      "content-type": "application/json",
+      ...(adminToken ? { authorization: "Bearer " + adminToken } : {}),
+      ...(options.headers ?? {}),
+    },
+  });
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.error ? JSON.stringify(body.error) : `Xato ${res.status}`);
+  }
+  return res.json();
+}
+
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const res = await fetch(BASE + path, {
     ...options,
@@ -96,4 +123,26 @@ export const api = {
   },
   payroll: (employeeId: string, from: string, to: string) =>
     request<Payroll>(`/api/dashboard/payroll?employeeId=${employeeId}&from=${from}&to=${to}`),
+
+  // ===== Admin =====
+  adminLogin: (email: string, password: string) =>
+    adminRequest<{ token: string }>("/api/admin/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+    }),
+  adminStats: () =>
+    adminRequest<{ companies: number; employees: number; devices: number; screenshots: number; samples: number }>(
+      "/api/admin/stats",
+    ),
+  adminCompanies: () =>
+    adminRequest<{ companies: AdminCompany[] }>("/api/admin/companies"),
 };
+
+export interface AdminCompany {
+  id: string;
+  name: string;
+  created_at: string;
+  employees: number;
+  devices: number;
+  last_activity: string | null;
+}
