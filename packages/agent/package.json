@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Feekr hodim agenti — ish vaqtini kuzatadi (Electron, Windows + Mac)",
+  "author": "Feekr",
   "main": "main.cjs",
   "scripts": {
     "dev": "electron .",
@@ -14,18 +15,18 @@
   "build": {
     "appId": "uz.feekr.agent",
     "productName": "Feekr",
+    "electronVersion": "42.4.0",
     "files": ["main.cjs", "preload.cjs", "renderer/**/*"],
     "directories": { "output": "dist", "buildResources": "build" },
-    "win": { "target": "nsis", "icon": "build/icon.ico" },
+    "win": { "target": "nsis" },
     "mac": {
       "target": "dmg",
-      "icon": "build/icon.icns",
       "category": "public.app-category.productivity"
     },
     "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true }
   },
   "devDependencies": {
-    "electron": "^42.4.0",
+    "electron": "42.4.0",
     "electron-builder": "^25.1.8"
   }
 }

@@ -68,5 +68,32 @@ foizi va screenshotlari paydo bo'ladi.
 > Hodimlar **internet orqali** (boshqa joydan) ulanishi uchun keyin tizimni
 > internetga joylashtirish (deploy) kerak bo'ladi.
 
+## Agentni `.exe` qilib yasash (hodimlarga tarqatish uchun)
+
+Agent allaqachon yasalgan. Ikki ko'rinishi bor:
+
+### 1. Portativ (hozir tayyor, o'rnatishsiz)
+```
+worktrack\packages\agent\dist\win-unpacked\
+```
+Bu papka ichidagi **Feekr.exe** to'g'ridan-to'g'ri ishlaydi. Hodimga butun
+`win-unpacked` papkasini ZIP qilib bering — ular ochib, `Feekr.exe` ni ishga tushiradi.
+O'rnatish shart emas.
+
+### 2. O'rnatuvchi (Feekr Setup.exe — bitta fayl) — qayta yasash kerak
+Bitta faylli chiroyli o'rnatuvchi uchun:
+```bash
+npm run dist:agent
+```
+> ⚠️ Bu buyruq Windows'da **symbolic link** yaratadi — buning uchun **Developer Mode**
+> yoqilgan bo'lishi kerak (Sozlamalar → Maxfiylik va xavfsizlik → Dasturchilar uchun →
+> **Developer Mode = ON**), YOKI terminalni **Administrator** sifatida oching.
+> Aks holda winCodeSign xatosi chiqadi (yuqoridagi portativ versiya baribir yasaladi).
+
+Tayyor bo'lganda o'rnatuvchi shu yerda paydo bo'ladi:
+`worktrack\packages\agent\dist\Feekr Setup 0.1.0.exe`
+
+> macOS uchun `.dmg` faqat Mac kompyuterda yasaladi: `npm run dist:mac`.
+
 ## To'xtatish
 Terminalda **Ctrl + C**.

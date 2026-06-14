@@ -7,17 +7,18 @@
     "packages/shared",
     "packages/server",
     "packages/dashboard",
-    "packages/landing",
-    "packages/agent"
+    "packages/landing"
   ],
   "scripts": {
     "dev": "concurrently -n server,panel,sayt -c blue,green,magenta \"npm:dev:server\" \"npm:dev:dashboard\" \"npm:dev:landing\"",
     "dev:server": "npm run dev --workspace=@worktrack/server",
     "dev:dashboard": "npm run dev --workspace=@worktrack/dashboard",
     "dev:landing": "npm run dev --workspace=@worktrack/landing",
-    "dev:agent": "npm run dev --workspace=@worktrack/agent",
+    "dev:agent": "npm --prefix packages/agent run dev",
     "build:dashboard": "npm run build --workspace=@worktrack/dashboard",
-    "build:landing": "npm run build --workspace=@worktrack/landing"
+    "build:landing": "npm run build --workspace=@worktrack/landing",
+    "dist:agent": "npm --prefix packages/agent run dist:win",
+    "postinstall": "npm --prefix packages/agent install"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
